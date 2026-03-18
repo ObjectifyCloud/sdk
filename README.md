@@ -5,7 +5,7 @@ TypeScript SDK for the [Objectify](https://objectify.cloud) multi-tenant Objects
 ## Installation
 
 ```bash
-npm install @objectify/sdk
+npm install github:ObjectifyCloud/sdk
 ```
 
 ## Quick Start
