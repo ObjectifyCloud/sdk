@@ -4,6 +4,13 @@
   "description": "TypeScript SDK for the Objectify multi-tenant Objects Platform API",
   "license": "MIT",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ObjectifyCloud/sdk.git"
+  },
+  "homepage": "https://objectify.cloud/documentation#sdks",
+  "keywords": ["objectify", "api", "sdk", "multi-tenant", "baas", "cloudflare", "workers", "rest"],
+  "engines": { "node": ">=18.0.0" },
   "exports": {
     ".": {
       "import": "./dist/esm/index.js",
@@ -14,7 +21,7 @@
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
-  "files": ["dist"],
+  "files": ["dist", "LICENSE", "README.md"],
   "scripts": {
     "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json",
     "test": "vitest run",
