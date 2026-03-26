@@ -11,9 +11,10 @@ export class ObjectifyError extends Error {
 
   static fromResponse(status: number, body: unknown): ObjectifyError {
     const b = body as Record<string, unknown>;
-    const code = (b?.code as string) || 'unknown_error';
-    const msg = (b?.message as string) || (b?.error as string) || `HTTP ${status}`;
-    const details = b?.details;
+    const err = (typeof b?.error === 'object' && b?.error !== null ? b.error : {}) as Record<string, unknown>;
+    const code = (err.code as string) || (b?.code as string) || 'unknown_error';
+    const msg = (err.message as string) || (b?.message as string) || `HTTP ${status}`;
+    const details = err.details || b?.details;
     if (status === 400 || status === 422) return new ValidationError(code, msg, details);
     if (status === 401) return new UnauthorizedError(msg);
     if (status === 403) return new ForbiddenError(msg);

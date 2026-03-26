@@ -29,108 +29,108 @@ export class AccountingResource {
 
 class AccountingAccountsResource {
   constructor(private c: ObjectifyClient) {}
-  list(q?: Record<string, string>): Promise<{ data: Account[] }> { return this.c.get('/accounting/accounts', q); }
-  get(id: string): Promise<Account> { return this.c.get(`/accounting/accounts/${id}`); }
-  create(d: Record<string, unknown>): Promise<Account> { return this.c.post('/accounting/accounts', d); }
-  update(id: string, d: Record<string, unknown>): Promise<Account> { return this.c.patch(`/accounting/accounts/${id}`, d); }
-  delete(id: string): Promise<void> { return this.c.delete(`/accounting/accounts/${id}`); }
+  list(q?: Record<string, string>): Promise<{ data: Account[] }> { return this.c.get('/v1/accounting/accounts', q); }
+  get(id: string): Promise<Account> { return this.c.get(`/v1/accounting/accounts/${id}`); }
+  create(d: Record<string, unknown>): Promise<Account> { return this.c.post('/v1/accounting/accounts', d); }
+  update(id: string, d: Record<string, unknown>): Promise<Account> { return this.c.patch(`/v1/accounting/accounts/${id}`, d); }
+  delete(id: string): Promise<void> { return this.c.delete(`/v1/accounting/accounts/${id}`); }
 }
 
 class AccountingPeriodsResource {
   constructor(private c: ObjectifyClient) {}
-  list(): Promise<{ data: unknown[] }> { return this.c.get('/accounting/periods'); }
-  get(id: string): Promise<unknown> { return this.c.get(`/accounting/periods/${id}`); }
-  create(d: Record<string, unknown>): Promise<unknown> { return this.c.post('/accounting/periods', d); }
-  update(id: string, d: Record<string, unknown>): Promise<unknown> { return this.c.patch(`/accounting/periods/${id}`, d); }
-  delete(id: string): Promise<void> { return this.c.delete(`/accounting/periods/${id}`); }
-  close(id: string): Promise<unknown> { return this.c.post(`/accounting/periods/${id}/close`); }
-  reopen(id: string): Promise<unknown> { return this.c.post(`/accounting/periods/${id}/reopen`); }
+  list(): Promise<{ data: unknown[] }> { return this.c.get('/v1/accounting/periods'); }
+  get(id: string): Promise<unknown> { return this.c.get(`/v1/accounting/periods/${id}`); }
+  create(d: Record<string, unknown>): Promise<unknown> { return this.c.post('/v1/accounting/periods', d); }
+  update(id: string, d: Record<string, unknown>): Promise<unknown> { return this.c.patch(`/v1/accounting/periods/${id}`, d); }
+  delete(id: string): Promise<void> { return this.c.delete(`/v1/accounting/periods/${id}`); }
+  close(id: string): Promise<unknown> { return this.c.post(`/v1/accounting/periods/${id}/close`); }
+  reopen(id: string): Promise<unknown> { return this.c.post(`/v1/accounting/periods/${id}/reopen`); }
 }
 
 class AccountingCurrenciesResource {
   constructor(private c: ObjectifyClient) {}
-  list(): Promise<{ data: unknown[] }> { return this.c.get('/accounting/currencies'); }
-  get(code: string): Promise<unknown> { return this.c.get(`/accounting/currencies/${code}`); }
-  create(d: Record<string, unknown>): Promise<unknown> { return this.c.post('/accounting/currencies', d); }
-  update(code: string, d: Record<string, unknown>): Promise<unknown> { return this.c.patch(`/accounting/currencies/${code}`, d); }
-  delete(code: string): Promise<void> { return this.c.delete(`/accounting/currencies/${code}`); }
+  list(): Promise<{ data: unknown[] }> { return this.c.get('/v1/accounting/currencies'); }
+  get(code: string): Promise<unknown> { return this.c.get(`/v1/accounting/currencies/${code}`); }
+  create(d: Record<string, unknown>): Promise<unknown> { return this.c.post('/v1/accounting/currencies', d); }
+  update(code: string, d: Record<string, unknown>): Promise<unknown> { return this.c.patch(`/v1/accounting/currencies/${code}`, d); }
+  delete(code: string): Promise<void> { return this.c.delete(`/v1/accounting/currencies/${code}`); }
 }
 
 class AccountingExchangeRatesResource {
   constructor(private c: ObjectifyClient) {}
-  list(q?: Record<string, string>): Promise<{ data: unknown[] }> { return this.c.get('/accounting/exchange-rates', q); }
-  get(id: string): Promise<unknown> { return this.c.get(`/accounting/exchange-rates/${id}`); }
-  create(d: Record<string, unknown>): Promise<unknown> { return this.c.post('/accounting/exchange-rates', d); }
-  delete(id: string): Promise<void> { return this.c.delete(`/accounting/exchange-rates/${id}`); }
+  list(q?: Record<string, string>): Promise<{ data: unknown[] }> { return this.c.get('/v1/accounting/exchange-rates', q); }
+  get(id: string): Promise<unknown> { return this.c.get(`/v1/accounting/exchange-rates/${id}`); }
+  create(d: Record<string, unknown>): Promise<unknown> { return this.c.post('/v1/accounting/exchange-rates', d); }
+  delete(id: string): Promise<void> { return this.c.delete(`/v1/accounting/exchange-rates/${id}`); }
 }
 
 class AccountingTaxCodesResource {
   constructor(private c: ObjectifyClient) {}
-  list(): Promise<{ data: unknown[] }> { return this.c.get('/accounting/tax-codes'); }
-  get(id: string): Promise<unknown> { return this.c.get(`/accounting/tax-codes/${id}`); }
-  create(d: Record<string, unknown>): Promise<unknown> { return this.c.post('/accounting/tax-codes', d); }
-  update(id: string, d: Record<string, unknown>): Promise<unknown> { return this.c.patch(`/accounting/tax-codes/${id}`, d); }
-  delete(id: string): Promise<void> { return this.c.delete(`/accounting/tax-codes/${id}`); }
+  list(): Promise<{ data: unknown[] }> { return this.c.get('/v1/accounting/tax-codes'); }
+  get(id: string): Promise<unknown> { return this.c.get(`/v1/accounting/tax-codes/${id}`); }
+  create(d: Record<string, unknown>): Promise<unknown> { return this.c.post('/v1/accounting/tax-codes', d); }
+  update(id: string, d: Record<string, unknown>): Promise<unknown> { return this.c.patch(`/v1/accounting/tax-codes/${id}`, d); }
+  delete(id: string): Promise<void> { return this.c.delete(`/v1/accounting/tax-codes/${id}`); }
 }
 
 class AccountingLedgerResource {
   constructor(private c: ObjectifyClient) {}
-  list(q?: Record<string, string>): Promise<{ data: JournalEntry[] }> { return this.c.get('/accounting/journal-entries', q); }
-  get(id: string): Promise<JournalEntry> { return this.c.get(`/accounting/journal-entries/${id}`); }
-  create(d: Record<string, unknown>): Promise<JournalEntry> { return this.c.post('/accounting/journal-entries', d); }
-  update(id: string, d: Record<string, unknown>): Promise<JournalEntry> { return this.c.patch(`/accounting/journal-entries/${id}`, d); }
-  delete(id: string): Promise<void> { return this.c.delete(`/accounting/journal-entries/${id}`); }
-  post(id: string): Promise<JournalEntry> { return this.c.post(`/accounting/journal-entries/${id}/post`); }
-  reverse(id: string): Promise<JournalEntry> { return this.c.post(`/accounting/journal-entries/${id}/reverse`); }
-  listRecurring(): Promise<{ data: unknown[] }> { return this.c.get('/accounting/recurring-entries'); }
-  getRecurring(id: string): Promise<unknown> { return this.c.get(`/accounting/recurring-entries/${id}`); }
-  createRecurring(d: Record<string, unknown>): Promise<unknown> { return this.c.post('/accounting/recurring-entries', d); }
-  updateRecurring(id: string, d: Record<string, unknown>): Promise<unknown> { return this.c.patch(`/accounting/recurring-entries/${id}`, d); }
-  deleteRecurring(id: string): Promise<void> { return this.c.delete(`/accounting/recurring-entries/${id}`); }
-  executeRecurring(id: string): Promise<unknown> { return this.c.post(`/accounting/recurring-entries/${id}/execute`); }
+  list(q?: Record<string, string>): Promise<{ data: JournalEntry[] }> { return this.c.get('/v1/accounting/journal-entries', q); }
+  get(id: string): Promise<JournalEntry> { return this.c.get(`/v1/accounting/journal-entries/${id}`); }
+  create(d: Record<string, unknown>): Promise<JournalEntry> { return this.c.post('/v1/accounting/journal-entries', d); }
+  update(id: string, d: Record<string, unknown>): Promise<JournalEntry> { return this.c.patch(`/v1/accounting/journal-entries/${id}`, d); }
+  delete(id: string): Promise<void> { return this.c.delete(`/v1/accounting/journal-entries/${id}`); }
+  post(id: string): Promise<JournalEntry> { return this.c.post(`/v1/accounting/journal-entries/${id}/post`); }
+  reverse(id: string): Promise<JournalEntry> { return this.c.post(`/v1/accounting/journal-entries/${id}/reverse`); }
+  listRecurring(): Promise<{ data: unknown[] }> { return this.c.get('/v1/accounting/recurring-entries'); }
+  getRecurring(id: string): Promise<unknown> { return this.c.get(`/v1/accounting/recurring-entries/${id}`); }
+  createRecurring(d: Record<string, unknown>): Promise<unknown> { return this.c.post('/v1/accounting/recurring-entries', d); }
+  updateRecurring(id: string, d: Record<string, unknown>): Promise<unknown> { return this.c.patch(`/v1/accounting/recurring-entries/${id}`, d); }
+  deleteRecurring(id: string): Promise<void> { return this.c.delete(`/v1/accounting/recurring-entries/${id}`); }
+  executeRecurring(id: string): Promise<unknown> { return this.c.post(`/v1/accounting/recurring-entries/${id}/execute`); }
 }
 
 class AccountingInvoicesResource {
   constructor(private c: ObjectifyClient) {}
-  list(q?: Record<string, string>): Promise<{ data: Invoice[] }> { return this.c.get('/accounting/invoices', q); }
-  get(id: string): Promise<Invoice> { return this.c.get(`/accounting/invoices/${id}`); }
-  create(d: Record<string, unknown>): Promise<Invoice> { return this.c.post('/accounting/invoices', d); }
-  update(id: string, d: Record<string, unknown>): Promise<Invoice> { return this.c.patch(`/accounting/invoices/${id}`, d); }
-  delete(id: string): Promise<void> { return this.c.delete(`/accounting/invoices/${id}`); }
-  approve(id: string): Promise<Invoice> { return this.c.post(`/accounting/invoices/${id}/approve`); }
-  void(id: string): Promise<Invoice> { return this.c.post(`/accounting/invoices/${id}/void`); }
+  list(q?: Record<string, string>): Promise<{ data: Invoice[] }> { return this.c.get('/v1/accounting/invoices', q); }
+  get(id: string): Promise<Invoice> { return this.c.get(`/v1/accounting/invoices/${id}`); }
+  create(d: Record<string, unknown>): Promise<Invoice> { return this.c.post('/v1/accounting/invoices', d); }
+  update(id: string, d: Record<string, unknown>): Promise<Invoice> { return this.c.patch(`/v1/accounting/invoices/${id}`, d); }
+  delete(id: string): Promise<void> { return this.c.delete(`/v1/accounting/invoices/${id}`); }
+  approve(id: string): Promise<Invoice> { return this.c.post(`/v1/accounting/invoices/${id}/approve`); }
+  void(id: string): Promise<Invoice> { return this.c.post(`/v1/accounting/invoices/${id}/void`); }
 }
 
 class AccountingPaymentsResource {
   constructor(private c: ObjectifyClient) {}
-  list(q?: Record<string, string>): Promise<{ data: unknown[] }> { return this.c.get('/accounting/payments', q); }
-  get(id: string): Promise<unknown> { return this.c.get(`/accounting/payments/${id}`); }
-  create(d: Record<string, unknown>): Promise<unknown> { return this.c.post('/accounting/payments', d); }
-  void(id: string): Promise<unknown> { return this.c.post(`/accounting/payments/${id}/void`); }
+  list(q?: Record<string, string>): Promise<{ data: unknown[] }> { return this.c.get('/v1/accounting/payments', q); }
+  get(id: string): Promise<unknown> { return this.c.get(`/v1/accounting/payments/${id}`); }
+  create(d: Record<string, unknown>): Promise<unknown> { return this.c.post('/v1/accounting/payments', d); }
+  void(id: string): Promise<unknown> { return this.c.post(`/v1/accounting/payments/${id}/void`); }
 }
 
 class AccountingBankingResource {
   constructor(private c: ObjectifyClient) {}
-  listAccounts(): Promise<{ data: unknown[] }> { return this.c.get('/accounting/bank-accounts'); }
-  getAccount(id: string): Promise<unknown> { return this.c.get(`/accounting/bank-accounts/${id}`); }
-  createAccount(d: Record<string, unknown>): Promise<unknown> { return this.c.post('/accounting/bank-accounts', d); }
-  updateAccount(id: string, d: Record<string, unknown>): Promise<unknown> { return this.c.patch(`/accounting/bank-accounts/${id}`, d); }
-  deleteAccount(id: string): Promise<void> { return this.c.delete(`/accounting/bank-accounts/${id}`); }
-  listTransactions(accountId: string, q?: Record<string, string>): Promise<{ data: unknown[] }> { return this.c.get(`/accounting/bank-accounts/${accountId}/transactions`, q); }
-  getTransaction(accountId: string, txId: string): Promise<unknown> { return this.c.get(`/accounting/bank-accounts/${accountId}/transactions/${txId}`); }
-  importTransactions(accountId: string, d: Record<string, unknown>): Promise<unknown> { return this.c.post(`/accounting/bank-accounts/${accountId}/transactions/import`, d); }
-  matchTransaction(accountId: string, txId: string, d: Record<string, unknown>): Promise<unknown> { return this.c.post(`/accounting/bank-accounts/${accountId}/transactions/${txId}/match`, d); }
-  reconcile(accountId: string, d: Record<string, unknown>): Promise<unknown> { return this.c.post(`/accounting/bank-accounts/${accountId}/reconcile`, d); }
+  listAccounts(): Promise<{ data: unknown[] }> { return this.c.get('/v1/accounting/bank-accounts'); }
+  getAccount(id: string): Promise<unknown> { return this.c.get(`/v1/accounting/bank-accounts/${id}`); }
+  createAccount(d: Record<string, unknown>): Promise<unknown> { return this.c.post('/v1/accounting/bank-accounts', d); }
+  updateAccount(id: string, d: Record<string, unknown>): Promise<unknown> { return this.c.patch(`/v1/accounting/bank-accounts/${id}`, d); }
+  deleteAccount(id: string): Promise<void> { return this.c.delete(`/v1/accounting/bank-accounts/${id}`); }
+  listTransactions(accountId: string, q?: Record<string, string>): Promise<{ data: unknown[] }> { return this.c.get(`/v1/accounting/bank-accounts/${accountId}/transactions`, q); }
+  getTransaction(accountId: string, txId: string): Promise<unknown> { return this.c.get(`/v1/accounting/bank-accounts/${accountId}/transactions/${txId}`); }
+  importTransactions(accountId: string, d: Record<string, unknown>): Promise<unknown> { return this.c.post(`/v1/accounting/bank-accounts/${accountId}/transactions/import`, d); }
+  matchTransaction(accountId: string, txId: string, d: Record<string, unknown>): Promise<unknown> { return this.c.post(`/v1/accounting/bank-accounts/${accountId}/transactions/${txId}/match`, d); }
+  reconcile(accountId: string, d: Record<string, unknown>): Promise<unknown> { return this.c.post(`/v1/accounting/bank-accounts/${accountId}/reconcile`, d); }
 }
 
 class AccountingReportsResource {
   constructor(private c: ObjectifyClient) {}
-  trialBalance(q?: Record<string, string>): Promise<unknown> { return this.c.get('/accounting/reports/trial-balance', q); }
-  balanceSheet(q?: Record<string, string>): Promise<unknown> { return this.c.get('/accounting/reports/balance-sheet', q); }
-  profitAndLoss(q?: Record<string, string>): Promise<unknown> { return this.c.get('/accounting/reports/profit-and-loss', q); }
-  agedReceivables(q?: Record<string, string>): Promise<unknown> { return this.c.get('/accounting/reports/aged-receivables', q); }
-  agedPayables(q?: Record<string, string>): Promise<unknown> { return this.c.get('/accounting/reports/aged-payables', q); }
-  cashFlow(q?: Record<string, string>): Promise<unknown> { return this.c.get('/accounting/reports/cash-flow', q); }
-  taxReport(q?: Record<string, string>): Promise<unknown> { return this.c.get('/accounting/reports/tax', q); }
-  generalLedger(q?: Record<string, string>): Promise<unknown> { return this.c.get('/accounting/reports/general-ledger', q); }
+  trialBalance(q?: Record<string, string>): Promise<unknown> { return this.c.get('/v1/accounting/reports/trial-balance', q); }
+  balanceSheet(q?: Record<string, string>): Promise<unknown> { return this.c.get('/v1/accounting/reports/balance-sheet', q); }
+  profitAndLoss(q?: Record<string, string>): Promise<unknown> { return this.c.get('/v1/accounting/reports/profit-and-loss', q); }
+  agedReceivables(q?: Record<string, string>): Promise<unknown> { return this.c.get('/v1/accounting/reports/aged-receivables', q); }
+  agedPayables(q?: Record<string, string>): Promise<unknown> { return this.c.get('/v1/accounting/reports/aged-payables', q); }
+  cashFlow(q?: Record<string, string>): Promise<unknown> { return this.c.get('/v1/accounting/reports/cash-flow', q); }
+  taxReport(q?: Record<string, string>): Promise<unknown> { return this.c.get('/v1/accounting/reports/tax', q); }
+  generalLedger(q?: Record<string, string>): Promise<unknown> { return this.c.get('/v1/accounting/reports/general-ledger', q); }
 }

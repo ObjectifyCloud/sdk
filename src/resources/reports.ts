@@ -3,16 +3,16 @@ import type { ObjectifyClient } from '../client.js';
 export class ReportsResource {
   constructor(private client: ObjectifyClient) {}
 
-  pipeline(typeId: string, data: Record<string, unknown>): Promise<unknown> {
-    return this.client.post(`/reports/${typeId}/pipeline`, data);
+  pipeline(data: Record<string, unknown>): Promise<unknown> {
+    return this.client.post('/v1/reports/pipeline', data);
   }
-  timeseries(typeId: string, data: Record<string, unknown>): Promise<unknown> {
-    return this.client.post(`/reports/${typeId}/timeseries`, data);
+  timeseries(data: Record<string, unknown>): Promise<unknown> {
+    return this.client.post('/v1/reports/timeseries', data);
   }
-  leaderboard(typeId: string, data: Record<string, unknown>): Promise<unknown> {
-    return this.client.post(`/reports/${typeId}/leaderboard`, data);
+  leaderboard(data: Record<string, unknown>): Promise<unknown> {
+    return this.client.post('/v1/reports/leaderboard', data);
   }
-  funnel(typeId: string, data: Record<string, unknown>): Promise<unknown> {
-    return this.client.post(`/reports/${typeId}/funnel`, data);
+  funnel(data: Record<string, unknown>): Promise<unknown> {
+    return this.client.post('/v1/reports/funnel', data);
   }
 }

@@ -5,9 +5,9 @@ export class SearchResource {
   constructor(private client: ObjectifyClient) {}
 
   search(typeId: string, params: SearchParams): Promise<PaginatedResponse<ObjectData>> {
-    return this.client.post(`/objects/${typeId}/search`, params);
+    return this.client.post(`/v1/objects/${typeId}/search`, params);
   }
   aggregate(typeId: string, params: AggregateParams): Promise<{ results: Record<string, unknown>[] }> {
-    return this.client.post(`/objects/${typeId}/aggregate`, params);
+    return this.client.post(`/v1/objects/${typeId}/aggregate`, params);
   }
 }

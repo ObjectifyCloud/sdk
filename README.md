@@ -1,4 +1,15 @@
-# @objectify/sdk
+# @objectify/sdk (DEPRECATED)
+
+> **This package is deprecated.** Use the auto-generated SDK at [`api/sdk/`](../api/sdk/) instead, which uses `openapi-fetch` with types generated from the OpenAPI spec for guaranteed 100% API coverage.
+>
+> ```bash
+> # New SDK usage:
+> import { createObjectifyClient } from '@objectify/sdk';
+> const client = createObjectifyClient({ baseUrl: 'https://api.objectify.cloud', apiKey: '...' });
+> const { data } = await client.GET('/v1/object-types');
+> ```
+
+---
 
 TypeScript SDK for the [Objectify](https://objectify.cloud) multi-tenant Objects Platform API.
 

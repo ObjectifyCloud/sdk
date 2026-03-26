@@ -4,15 +4,15 @@ export class WorkflowsResource {
   constructor(private client: ObjectifyClient) {}
 
   submit(typeId: string, objectId: string): Promise<{ status: string }> {
-    return this.client.post(`/objects/${typeId}/${objectId}/workflow/submit`);
+    return this.client.post(`/v1/objects/${typeId}/${objectId}/submit-for-review`);
   }
   approve(typeId: string, objectId: string, data?: { comment?: string }): Promise<{ status: string }> {
-    return this.client.post(`/objects/${typeId}/${objectId}/workflow/approve`, data);
+    return this.client.post(`/v1/objects/${typeId}/${objectId}/approve`, data);
   }
   reject(typeId: string, objectId: string, data?: { comment?: string }): Promise<{ status: string }> {
-    return this.client.post(`/objects/${typeId}/${objectId}/workflow/reject`, data);
+    return this.client.post(`/v1/objects/${typeId}/${objectId}/reject`, data);
   }
   status(typeId: string, objectId: string): Promise<{ status: string; history: unknown[] }> {
-    return this.client.get(`/objects/${typeId}/${objectId}/workflow`);
+    return this.client.get(`/v1/objects/${typeId}/${objectId}/workflow-status`);
   }
 }

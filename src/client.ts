@@ -111,6 +111,10 @@ export class ObjectifyClient {
 
         const body = await res.json().catch(() => null);
         if (!res.ok) throw ObjectifyError.fromResponse(res.status, body);
+        const envelope = body as { success?: boolean; data?: unknown } | null;
+        if (envelope && typeof envelope === 'object' && 'data' in envelope) {
+          return envelope.data as T;
+        }
         return body as T;
       } catch (err) {
         lastError = err;

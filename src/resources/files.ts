@@ -5,42 +5,42 @@ export class FilesResource {
   constructor(private client: ObjectifyClient) {}
 
   get(fileId: string): Promise<FileData> {
-    return this.client.get(`/files/${fileId}`);
+    return this.client.get(`/v1/files/${fileId}`);
   }
   update(fileId: string, data: Partial<{ filename: string; access: string; folder: string; meta: Record<string, unknown> }>): Promise<FileData> {
-    return this.client.patch(`/files/${fileId}`, data);
+    return this.client.patch(`/v1/files/${fileId}`, data);
   }
   delete(fileId: string): Promise<void> {
-    return this.client.delete(`/files/${fileId}`);
+    return this.client.delete(`/v1/files/${fileId}`);
   }
   search(query?: { folder?: string; mime_type?: string; object_type_id?: string; object_id?: string; cursor?: string; limit?: number }): Promise<PaginatedResponse<FileData>> {
-    return this.client.get('/files', query);
+    return this.client.post('/v1/files/search', query);
   }
-  signedUrl(fileId: string, query?: { expires_in?: number }): Promise<{ url: string; expires_at: string }> {
-    return this.client.get(`/files/${fileId}/signed-url`, query);
+  signedUrl(fileId: string, data?: { expires_in?: number }): Promise<{ url: string; expires_at: string }> {
+    return this.client.post(`/v1/files/${fileId}/signed-url`, data);
   }
   listVersions(fileId: string): Promise<{ versions: FileData[] }> {
-    return this.client.get(`/files/${fileId}/versions`);
+    return this.client.get(`/v1/files/${fileId}/versions`);
   }
   getStats(): Promise<{ total_files: number; total_bytes: number; by_type: Record<string, number> }> {
-    return this.client.get('/files/stats');
+    return this.client.get('/v1/files/stats');
   }
   listFolders(): Promise<{ folders: string[] }> {
-    return this.client.get('/files/folders');
+    return this.client.get('/v1/files/folders');
   }
   listTrash(query?: { cursor?: string; limit?: number }): Promise<PaginatedResponse<FileData>> {
-    return this.client.get('/files/trash', query);
+    return this.client.get('/v1/files/trash', query);
   }
   restore(fileId: string): Promise<FileData> {
-    return this.client.post(`/files/${fileId}/restore`);
+    return this.client.post(`/v1/files/${fileId}/restore`);
   }
   batchRead(ids: string[]): Promise<{ files: FileData[] }> {
-    return this.client.post('/files/batch/read', { ids });
+    return this.client.post('/v1/files/batch/read', { ids });
   }
   batchDelete(ids: string[]): Promise<{ deleted: number }> {
-    return this.client.post('/files/batch/delete', { ids });
+    return this.client.post('/v1/files/batch/delete', { ids });
   }
   batchUpdate(items: { file_id: string; data: Partial<FileData> }[]): Promise<{ updated: FileData[] }> {
-    return this.client.post('/files/batch/update', { items });
+    return this.client.post('/v1/files/batch/update', { items });
   }
 }

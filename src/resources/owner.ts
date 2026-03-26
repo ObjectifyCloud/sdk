@@ -20,7 +20,7 @@ export class OwnerResource {
   mfaEnroll(data: { type: 'totp' }): Promise<{ secret: string; qr_code: string }> { return this.client.post('/owner/mfa/enroll', data); }
   mfaVerify(data: { code: string }): Promise<{ verified: boolean }> { return this.client.post('/owner/mfa/verify', data); }
   mfaList(): Promise<{ factors: unknown[] }> { return this.client.get('/owner/mfa/factors'); }
-  mfaUnenroll(data: { factor_id: string }): Promise<void> { return this.client.post('/owner/mfa/unenroll', data); }
+  mfaUnenroll(factorId: string): Promise<void> { return this.client.delete(`/owner/mfa/${factorId}`); }
 
   // Passkeys
   passkeysList(): Promise<{ passkeys: unknown[] }> { return this.client.get('/owner/passkeys'); }
@@ -34,12 +34,12 @@ export class OwnerResource {
   // Tenants
   listTenants(): Promise<{ data: Tenant[] }> { return this.client.get('/owner/tenants'); }
   createTenant(data: { name: string; slug?: string }): Promise<Tenant> { return this.client.post('/owner/tenants', data); }
-  switchTenant(tenantId: string): Promise<AuthTokens> { return this.client.post(`/owner/tenants/${tenantId}/switch`); }
+  switchTenant(data: { tenant_id: string }): Promise<AuthTokens> { return this.client.post('/owner/switch-tenant', data); }
 
   // Support tickets
-  listTickets(q?: Record<string, string>): Promise<{ data: unknown[] }> { return this.client.get('/owner/tickets', q); }
-  getTicket(id: string): Promise<unknown> { return this.client.get(`/owner/tickets/${id}`); }
-  createTicket(data: { title: string; body: string }): Promise<unknown> { return this.client.post('/owner/tickets', data); }
-  replyTicket(id: string, data: { body: string }): Promise<unknown> { return this.client.post(`/owner/tickets/${id}/reply`, data); }
-  closeTicket(id: string): Promise<unknown> { return this.client.post(`/owner/tickets/${id}/close`); }
+  listTickets(q?: Record<string, string>): Promise<{ data: unknown[] }> { return this.client.get('/owner/support-tickets', q); }
+  getTicket(id: string): Promise<unknown> { return this.client.get(`/owner/support-tickets/${id}`); }
+  createTicket(data: { title: string; body: string }): Promise<unknown> { return this.client.post('/owner/support-tickets', data); }
+  replyTicket(id: string, data: { body: string }): Promise<unknown> { return this.client.post(`/owner/support-tickets/${id}/reply`, data); }
+  closeTicket(id: string): Promise<unknown> { return this.client.post(`/owner/support-tickets/${id}/close`); }
 }

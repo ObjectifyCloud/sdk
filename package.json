@@ -1,7 +1,8 @@
 {
   "name": "@objectify/sdk",
   "version": "0.1.0",
-  "description": "TypeScript SDK for the Objectify multi-tenant Objects Platform API",
+  "description": "DEPRECATED: Use @objectify/sdk from api/sdk/ instead. TypeScript SDK for the Objectify multi-tenant Objects Platform API",
+  "deprecated": "Use the auto-generated SDK at api/sdk/ which uses openapi-fetch with types from the OpenAPI spec.",
   "license": "MIT",
   "type": "module",
   "repository": {
